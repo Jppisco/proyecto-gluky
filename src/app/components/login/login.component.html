@@ -1,0 +1,32 @@
+<div>
+
+  <div>
+
+    <h1>Login</h1>
+    <form (ngSubmit)="login()" [formGroup]="loginUsuario">
+      <div>
+        <input type="email" formControlName="email" placeholder="name@example.com">
+        <label>Email</label>
+        <span *ngIf="loginUsuario.get('email')?.hasError('required') && loginUsuario.get('email')?.touched">
+          El <strong>correo</strong> es requerido
+        </span>
+        <span *ngIf="loginUsuario.get('email')?.hasError('email') && loginUsuario.get('email')?.touched">
+          El <strong>correo</strong> es invalido
+        </span>
+      </div>
+      <div>
+        <input type="password" formControlName="password" placeholder="Password">
+        <label>Password</label>
+        <span *ngIf="loginUsuario.get('password')?.hasError('required') && loginUsuario.get('password')?.touched">
+          La <strong>password</strong> es requerida
+        </span>
+      </div>
+      <div>
+        <button type="submit" [disabled]="loginUsuario.invalid">Ingresar</button>
+      </div>
+      <p>No tienes cuenta? <a routerLink="/registrar-usuario">Registrar</a></p>
+      <a routerLink="/recuperar-password">Recuperar Contraseña</a>
+    </form>
+  </div>
+
+</div>

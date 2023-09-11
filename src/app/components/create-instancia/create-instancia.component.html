@@ -1,0 +1,11 @@
+<button class="agregar" routerLink="/list-I">volver</button>
+<div class="container">
+  <h1>{{titulo}}</h1>
+  <form [formGroup]="createInstancia" (ngSubmit)="agregarEditarIntancias()">
+    <input type="text" placeholder="ID" formControlName="id_instancia">
+    <input type="text" placeholder="Nombre" formControlName="nombre">
+    <input type="text" placeholder="documento ID" formControlName="doc_id">
+    <input type="text" placeholder="Pais" formControlName="pais">
+    <button class="submit">Agregar</button>
+  </form>
+</div>

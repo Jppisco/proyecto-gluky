@@ -1,0 +1,39 @@
+<div>
+  <div>
+
+    <h1>Registrarse</h1>
+    <form (ngSubmit)="registrar()" [formGroup]="registrarUsuario">
+      <div>
+        <input type="email" formControlName="email" placeholder="name@example.com">
+        <label>Email</label>
+        <span *ngIf="registrarUsuario.get('email')?.hasError('required') && registrarUsuario.get('email')?.touched">
+          El <strong>correo</strong> es requerido
+        </span>
+        <span *ngIf="registrarUsuario.get('email')?.hasError('email') && registrarUsuario.get('email')?.touched">
+          El <strong>correo</strong> es invalido
+        </span>
+      </div>
+      <div>
+        <input type="password" formControlName="password" placeholder="Password">
+        <label>Password</label>
+        <span
+          *ngIf="registrarUsuario.get('password')?.hasError('required') && registrarUsuario.get('password')?.touched">
+          La <strong>password</strong> es requerida
+        </span>
+        <span
+          *ngIf="registrarUsuario.get('password')?.hasError('minlength') && registrarUsuario.get('password')?.touched">
+          El <strong>password</strong> debe tener 6 caracteres
+        </span>
+      </div>
+      <div>
+        <input type="password" formControlName="repetirPassword" placeholder="Repetir Password">
+        <label>Repetir Passowrd</label>
+      </div>
+      <div>
+        <button [disabled]="registrarUsuario.invalid" type="submit">Aceptar</button>
+      </div>
+      <a routerLink="/login">Volver</a>
+    </form>
+  </div>
+
+</div>
