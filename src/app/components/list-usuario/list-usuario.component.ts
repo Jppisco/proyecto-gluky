@@ -27,23 +27,7 @@ export class ListUsuarioComponent implements OnInit {
     this.id_instancia = this.aRoute.snapshot.paramMap.get('id_instancia');
     console.log(this.id_instancia)
   }
-  // getUsuariosBy(id_instancia: string) {
-  //   this._usuarioService.getUsuariosBy(id_instancia).subscribe(data => {
-  //     this.usuarios = [];
-  //     data.forEach((element: any) => {
-  //       console.log(element.payload.doc.id)
 
-  //       this.usuarios.push({
-  //         id_instancia: element.payload.doc.id_instancia,
-  //         ...element.payload.doc.data()
-  //       })
-
-  //     });
-  //     console.log(this.usuarios)
-  //   })
-  //   console.log('este es el id por BY', id_instancia)
-
-  // }
   //hacemos una funcion que no trae una la consulta de todas las intancias
   eliminarUsuario(id: string) {
     Swal.fire({
@@ -72,6 +56,8 @@ export class ListUsuarioComponent implements OnInit {
 
 
   }
+
+  //metodo que retorna todos los datos de los usuarios y se almacenan en un arreglo
   getUsuarios() {
     this._usuarioService.getUsuarios().subscribe(data => {
       this.usuarios = [];

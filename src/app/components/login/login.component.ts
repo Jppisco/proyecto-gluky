@@ -15,22 +15,26 @@ export class LoginComponent implements OnInit {
 
 
   constructor(
+
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
     private router: Router,
     private firebaseError: FirebaseCodeErrorService
+
   ) {
+
     this.loginUsuario = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     })
+
   }
 
   ngOnInit(): void { }
 
   //metodo para validar el login con los datos del formulario
-
   login() {
+
     const email = this.loginUsuario.value.email;
     const password = this.loginUsuario.value.password;
 
@@ -38,11 +42,12 @@ export class LoginComponent implements OnInit {
       //validamos si el correo ya fue verificado
       if (user.user?.emailVerified) {
         this.router.navigate(['/list-I']);
-      } else {
+      }
+      else {
         this.router.navigate(['/verificar-correo']);
       }
-    }).catch((error) => {
 
+    }).catch((error) => {
       Swal.fire({
         position: 'top-end',
         icon: 'error',

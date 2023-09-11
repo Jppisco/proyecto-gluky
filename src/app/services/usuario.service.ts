@@ -22,6 +22,7 @@ export class UsuarioService {
   eliminarUsuario(id: string): Promise<any> {
     return this.firestore.collection('usuarios').doc(id).delete();
   }
+  //hacemos un metodo que actualiza usuarios por el id y recibe la info en data
   actualizarUsuario(id: string, data: any): Promise<any> {
     return this.firestore.collection("usuarios").doc(id).update(data);
   }
@@ -31,6 +32,7 @@ export class UsuarioService {
     return this.firestore.collection('usuarios').doc(id).snapshotChanges();
   }
 
+  //metodo que hace la consulta
   getUsuariosBy(id_instancia: string): Observable<any> {
     return this.firestore.collection('usuarios', ref => ref.where(id_instancia, '==', 'id_instancia')).valueChanges();
   }

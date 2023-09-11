@@ -10,10 +10,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./create-instancia.component.css']
 })
 export class CreateInstanciaComponent implements OnInit {
+  //generamos variables
   createInstancia: FormGroup;
   id: string | null;
   titulo = 'Agregar Instancia';
   ngOnInit(): void {
+    //iniciamos este metodo apenas se abra el omponente
     this.esEditar();
   }
   constructor(
@@ -24,6 +26,7 @@ export class CreateInstanciaComponent implements OnInit {
 
 
   ) {
+    //recolectamos todos los datos del formulario
     this.createInstancia = this.fb.group({
       id_instancia: ['', Validators.required],
       nombre: ['', Validators.required],

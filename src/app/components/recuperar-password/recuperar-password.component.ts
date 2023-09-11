@@ -12,7 +12,6 @@ import Swal from 'sweetalert2';
 })
 export class RecuperarPasswordComponent implements OnInit {
   recuperarUsuario: FormGroup;
-  loading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -31,9 +30,7 @@ export class RecuperarPasswordComponent implements OnInit {
   recuperar() {
     const email = this.recuperarUsuario.value.correo;
 
-    this.loading = true;
-    this.afAuth
-      .sendPasswordResetEmail(email)
+    this.afAuth.sendPasswordResetEmail(email)
       .then(() => {
         Swal.fire({
           position: 'top-end',

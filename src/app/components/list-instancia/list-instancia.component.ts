@@ -37,6 +37,8 @@ export class ListInstanciaComponent implements OnInit {
     })
   }
 
+  //metodo para eliminar instancias recibiendo el id
+
   eliminarInstancia(id: string) {
     Swal.fire({
       title: 'Estas Seguro?',
@@ -64,7 +66,7 @@ export class ListInstanciaComponent implements OnInit {
 
 
   }
-
+  //cerrar sesion por angularfireauth
   logOut() {
     this.afAuth.signOut().then(() => this.router.navigate(['/login']));
   }

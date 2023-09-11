@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./create-usuario.component.css']
 })
 export class CreateUsuarioComponent implements OnInit {
+  //generamos variables
   createUsuario: FormGroup;
   id_instancia: string | null;
   id: string | null;

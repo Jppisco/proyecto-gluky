@@ -15,26 +15,29 @@ export class RegistrarUsuarioComponent implements OnInit {
 
 
   constructor(
+
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
     private router: Router,
     private firebaseError: FirebaseCodeErrorService
+
   ) {
+
     this.registrarUsuario = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       repetirPassword: ['', Validators.required],
     });
+
   }
 
   ngOnInit(): void { }
-  //metodo que registra el usuario
 
+  //metodo que registra el usuario
   registrar() {
     const email = this.registrarUsuario.value.email;
     const password = this.registrarUsuario.value.password;
     const repetirPassowrd = this.registrarUsuario.value.repetirPassword;
-
     console.log(this.registrarUsuario);
     //valida que las dos contraseñas sean iguales
     if (password !== repetirPassowrd) {
@@ -55,7 +58,6 @@ export class RegistrarUsuarioComponent implements OnInit {
         this.verificarCorreo();
       })
       .catch((error) => {
-
         Swal.fire({
           position: 'top-end',
           icon: 'error',
@@ -63,11 +65,10 @@ export class RegistrarUsuarioComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-
       });
   }
 
-  //metodo para verificar el corre
+  //metodo para verificar el correo
   verificarCorreo() {
     this.afAuth.currentUser
       .then((user) => user?.sendEmailVerification())
