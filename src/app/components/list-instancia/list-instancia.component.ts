@@ -11,7 +11,17 @@ import Swal from 'sweetalert2';
 })
 export class ListInstanciaComponent implements OnInit {
   instancias: any[] = [];
+  dataUser: any;
+
   ngOnInit(): void {
+    this.afAuth.currentUser.then(user => {
+      if (user && user.emailVerified) {
+        this.dataUser = user;
+        console.log(user)
+      } else {
+        this.router.navigate(['/login']);
+      }
+    })
     //al iniciar el componente va a ejecutar la funcion
     this.getInstancias();
   }
@@ -33,7 +43,7 @@ export class ListInstanciaComponent implements OnInit {
         })
 
       });
-      console.log(this.instancias)
+      
     })
   }
 
