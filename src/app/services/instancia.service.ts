@@ -35,4 +35,5 @@ export class InstanciaService {
     return this.firestore.collection("instancias").doc(id).update(data);
   }
 
+
 }

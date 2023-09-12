@@ -65,7 +65,7 @@ export class CreateUsuarioComponent implements OnInit {
         timer: 1500
       })
       console.log('Usuario registrado con exito');
-      this.router.navigate(['/list-U'])
+      this.router.navigate(['/list-U/', this.id_instancia])
     }).catch(error => {
       console.log(error)
     })

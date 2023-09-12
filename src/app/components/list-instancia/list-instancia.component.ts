@@ -11,9 +11,11 @@ import Swal from 'sweetalert2';
 })
 export class ListInstanciaComponent implements OnInit {
   instancias: any[] = [];
+
   dataUser: any;
 
   ngOnInit(): void {
+
     this.afAuth.currentUser.then(user => {
       if (user && user.emailVerified) {
         this.dataUser = user;
@@ -31,6 +33,7 @@ export class ListInstanciaComponent implements OnInit {
     private router: Router,
   ) { }
 
+
   //hacemos una funcion que no trae una la consulta de todas las intancias
   getInstancias() {
     this._instanciaService.getInstancias().subscribe(data => {
@@ -43,7 +46,7 @@ export class ListInstanciaComponent implements OnInit {
         })
 
       });
-      
+
     })
   }
 

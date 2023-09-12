@@ -1,5 +1,5 @@
 <button [routerLink]="['/create-U/',id_instancia]">Añadir</button>
-<button routerLink="list-I">volver</button>
+<button routerLink="/list-I">volver</button>
 <div class="container">
   <h5 *ngIf="usuarios.length == 0" style="margin-top: 30px;">No hay datos</h5>
   <table class="table" *ngIf="usuarios.length > 0">
@@ -15,16 +15,17 @@
       </tr>
     </thead>
     <tbody class="table__body">
-      <tr class="table__row" *ngFor="let usuario of usuarios">
-        <td class="table__cell">{{usuario.id_instancia}}</td>
-        <td class="table__cell">{{usuario.usuario}}</td>
-        <td class="table__cell">{{usuario.clave}}</td>
-        <td class="table__cell">{{usuario.fechaCreacion * 1000 | date }}</td>
-        <td class="table__cell">{{usuario.fechaActualizacion * 1000 | date}}</td>
-        <td class="table__cell table__cell--options"><i (click)="eliminarUsuario(usuario.id)"
+
+      <tr class="table__row" *ngFor="let usuarios of usuario">
+        <td class="table__cell">{{usuarios.id_instancia}}</td>
+        <td class="table__cell">{{usuarios.usuario}}</td>
+        <td class="table__cell">{{usuarios.clave}}</td>
+        <td class="table__cell">{{usuarios.fechaCreacion * 1000 | date }}</td>
+        <td class="table__cell">{{usuarios.fechaActualizacion * 1000 | date}}</td>
+        <td class="table__cell table__cell--options"><i (click)="eliminarUsuario(usuarios.id)"
             class="fas fa-trash-alt fa-lg"></i></td>
         <td class="table__cell table__cell--options"><i class="fas fa-edit fa-lg"
-            [routerLink]="['/edit-U/',usuario.id,usuario.id_instancia]"></i></td>
+            [routerLink]="['/edit-U/',usuarios.id,usuarios.id_instancia]"></i></td>
       </tr>
     </tbody>
   </table>
