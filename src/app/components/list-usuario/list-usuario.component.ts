@@ -46,8 +46,6 @@ export class ListUsuarioComponent implements OnInit {
       });
       console.log(this.usuario)
     })
-
-    console.log('este es el id por BY', this.id_instancia)
   }
 
 

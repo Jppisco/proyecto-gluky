@@ -89,7 +89,7 @@ export class CreateUsuarioComponent implements OnInit {
         timer: 1500
       })
       console.log("Usuario Actualizada");
-      this.router.navigate(['/list-I'])
+      this.router.navigate(['/list-U/', this.id_instancia])
     }).catch(error => {
       console.log(error)
     })
