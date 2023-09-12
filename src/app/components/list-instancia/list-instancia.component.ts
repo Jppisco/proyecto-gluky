@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { InstanciaService } from 'src/app/services/instancia.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,20 +16,13 @@ export class ListInstanciaComponent implements OnInit {
   dataUser: any;
 
   ngOnInit(): void {
-
-    this.afAuth.currentUser.then(user => {
-      if (user && user.emailVerified) {
-        this.dataUser = user;
-        console.log(user)
-      } else {
-        this.router.navigate(['/login']);
-      }
-    })
+    this._usuarioService.logout()
     //al iniciar el componente va a ejecutar la funcion
     this.getInstancias();
   }
   constructor(
     private _instanciaService: InstanciaService,
+    private _usuarioService: UsuarioService,
     private afAuth: AngularFireAuth,
     private router: Router,
   ) { }

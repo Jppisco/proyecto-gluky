@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InstanciaService } from 'src/app/services/instancia.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,11 +16,13 @@ export class CreateInstanciaComponent implements OnInit {
   id: string | null;
   titulo = 'Agregar Instancia';
   ngOnInit(): void {
+    this._usuarioService.logout()
     //iniciamos este metodo apenas se abra el omponente
     this.esEditar();
   }
   constructor(
     private _instanciaService: InstanciaService,
+    private _usuarioService: UsuarioService,
     private fb: FormBuilder,
     private router: Router,
     private aRoute: ActivatedRoute,

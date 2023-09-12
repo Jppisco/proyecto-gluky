@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
+  dataUser: any;
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore,
+    private afAuth: AngularFireAuth,
+    private router: Router,) {
+
+  }
 
   //hacemos una metodo para almacenar los datos en la collecion
   agregarUsuarios(instancia: any): Promise<any> {
@@ -35,6 +43,17 @@ export class UsuarioService {
   //metodo que hace la consulta
   getUsuariosBy(id_instancia: string): Observable<any> {
     return this.firestore.collection('usuarios', ref => ref.where('id_instancia', '==', id_instancia)).snapshotChanges();
+  }
+
+  logout() {
+    this.afAuth.currentUser.then(user => {
+      if (user && user.emailVerified) {
+        this.dataUser = user;
+        console.log(user)
+      } else {
+        this.router.navigate(['/login']);
+      }
+    })
   }
 
 }

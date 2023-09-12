@@ -17,6 +17,7 @@ export class CreateUsuarioComponent implements OnInit {
   id: string | null;
   titulo = 'Agregar Usuario';
   ngOnInit(): void {
+    this._usuarioService.logout()
     this.esEditar()
   }
   constructor(private router: Router,
