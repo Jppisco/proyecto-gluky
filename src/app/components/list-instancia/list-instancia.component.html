@@ -1,5 +1,7 @@
-<button class="button" routerLink="/create-I">Añadir Instancia</button>
+
+<button class="button" routerLink="/create-I">Crear Instancia</button>
 <button type="button" class="btn btn-outline-primary me-2" (click)="logOut()">LogOut</button>
+
 <div class="container">
   <h5 *ngIf="instancias.length == 0" style="margin-top: 30px;">No hay datos</h5>
   <table class="table" *ngIf="instancias.length > 0">
@@ -24,14 +26,51 @@
         <td class="table__cell">{{instancia.pais}}</td>
         <td class="table__cell">{{instancia.fechaCreacion * 1000 | date }}</td>
         <td class="table__cell">{{instancia.fechaActualizacion * 1000 | date}}</td>
-        <td class="table__cell table__cell--options"><i (click)="eliminarInstancia(instancia.id)"
-            class="fas fa-trash-alt fa-lg"></i></td>
-        <td class="table__cell table__cell--options"><i class="fas fa-edit fa-lg"
-            [routerLink]="['/edit/',instancia.id]"></i></td>
-        <td class="table__cell table__cell--options"><i class="fas fa-users fa-lg"
-            [routerLink]="['/list-U/',instancia.id_instancia]"></i></td>
+        <td class="table__cell table__cell--options"><i (click)="eliminarInstancia(instancia.id)" class="fas fa-trash-alt fa-lg"></i></td>
+        <td class="table__cell table__cell--options"><i class="fas fa-edit fa-lg" [routerLink]="['/edit/',instancia.id]"></i></td>
+        <td class="table__cell table__cell--options"><i class="fas fa-users fa-lg" [routerLink]="['/list-U/',instancia.id_instancia]"></i></td>
       </tr>
     </tbody>
   </table>
-
 </div>
+
+
+<div class="table__mobile" *ngIf="instancias.length > 0">
+  <h5 *ngIf="instancias.length == 0" style="margin-top: 30px;">No hay datos</h5>
+  <div class="table__mobile__item" *ngFor="let instancia of instancias">
+      <div class="table__mobile__row">
+          <div class="table__mobile__header">ID</div>
+          <div class="table__mobile__body">{{instancia.id_instancia}}</div>
+      </div>
+      <div class="table__mobile__row">
+          <div class="table__mobile__header">Nombre</div>
+          <div class="table__mobile__body">{{instancia.nombre}}</div>
+      </div>
+      <div class="table__mobile__row">
+          <div class="table__mobile__header">Documento</div>
+          <div class="table__mobile__body">{{instancia.doc_id}}</div>
+      </div>
+      <div class="table__mobile__row">
+          <div class="table__mobile__header">País</div>
+          <div class="table__mobile__body">{{instancia.pais}}</div>
+      </div>
+      <div class="table__mobile__row">
+          <div class="table__mobile__header">Creación</div>
+          <div class="table__mobile__body">{{instancia.fechaCreacion * 1000 | date }}</div>
+      </div>
+      <div class="table__mobile__row">
+          <div class="table__mobile__header">Actualización</div>
+          <div class="table__mobile__body">{{instancia.fechaActualizacion * 1000 | date}}</div>
+      </div>
+      <div class="table__mobile__row">
+          <div class="table__mobile__header table__header--options">Opciones</div>
+          <div class="table__mobile__body">
+            <i class="fas fa-trash-alt fa-lg" (click)="eliminarInstancia(instancia.id)"></i>
+            <i class="fas fa-edit fa-lg" [routerLink]="['/edit/',instancia.id]"></i>
+            <i class="fas fa-users fa-lg" [routerLink]="['/list-U/',instancia.id_instancia]"></i>
+          </div>
+      </div>
+  </div>
+</div>
+
+
