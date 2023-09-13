@@ -18,21 +18,22 @@ export class UsuarioService {
   }
 
   //hacemos una metodo para almacenar los datos en la collecion
-  agregarUsuarios(instancia: any): Promise<any> {
-    return this.firestore.collection('usuarios').add(instancia);
+  async agregarUsuarios(instancia: any): Promise<any> {
+    await this.firestore.collection('usuarios').add(instancia);
   }
+
 
   //hacemos una consulta a la base de datos y ordenamos por fecha de creacion
   getUsuarios(): Observable<any> {
     return this.firestore.collection('usuarios', ref => ref.orderBy('fechaCreacion', 'asc')).snapshotChanges();
   }
   //hacemos una metodo recibe el id lo valida y lo elimina
-  eliminarUsuario(id: string): Promise<any> {
-    return this.firestore.collection('usuarios').doc(id).delete();
+  async eliminarUsuario(id: string): Promise<any> {
+    await this.firestore.collection('usuarios').doc(id).delete();
   }
   //hacemos un metodo que actualiza usuarios por el id y recibe la info en data
-  actualizarUsuario(id: string, data: any): Promise<any> {
-    return this.firestore.collection("usuarios").doc(id).update(data);
+  async actualizarUsuario(id: string, data: any): Promise<any> {
+    await this.firestore.collection("usuarios").doc(id).update(data);
   }
 
   //hacemos un metodo que nos va a retornar todos los datos dependiendo el id

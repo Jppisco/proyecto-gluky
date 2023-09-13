@@ -12,8 +12,8 @@ export class InstanciaService {
   }
 
   //hacemos una metodo para almacenar los datos en la collecion
-  agregarInstancia(instancia: any): Promise<any> {
-    return this.firestore.collection('instancias').add(instancia);
+  async agregarInstancia(instancia: any): Promise<any> {
+    await this.firestore.collection('instancias').add(instancia);
   }
 
   //hacemos una consulta a la base de datos y ordenamos por fecha de creacion
@@ -22,8 +22,8 @@ export class InstanciaService {
   }
 
   //hacemos una metodo recibe el id lo valida y lo elimina
-  eliminarInstancia(id: string): Promise<any> {
-    return this.firestore.collection('instancias').doc(id).delete();
+  async eliminarInstancia(id: string): Promise<any> {
+    await this.firestore.collection('instancias').doc(id).delete();
   }
 
   //hacemos un metodo que nos va a retornar todos los datos dependiendo el id
@@ -31,8 +31,8 @@ export class InstanciaService {
     return this.firestore.collection('instancias').doc(id).snapshotChanges();
   }
   //hacemos un metodo que va actualizar una instancia por el id
-  actualizarInstancia(id: string, data: any): Promise<any> {
-    return this.firestore.collection("instancias").doc(id).update(data);
+  async actualizarInstancia(id: string, data: any): Promise<any> {
+    await this.firestore.collection("instancias").doc(id).update(data);
   }
 
 

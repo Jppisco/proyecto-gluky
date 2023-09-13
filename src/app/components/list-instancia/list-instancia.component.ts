@@ -29,8 +29,8 @@ export class ListInstanciaComponent implements OnInit {
 
 
   //hacemos una funcion que no trae una la consulta de todas las intancias
-  getInstancias() {
-    this._instanciaService.getInstancias().subscribe(data => {
+  async getInstancias() {
+    await this._instanciaService.getInstancias().subscribe(data => {
       this.instancias = [];
       data.forEach((element: any) => {
 
