@@ -16,6 +16,7 @@ import { RegistrarUsuarioComponent } from './components/registrar-usuario/regist
 import { LoginComponent } from './components/login/login.component';
 import { VerificarCorreoComponent } from './components/verificar-correo/verificar-correo.component';
 import { RecuperarPasswordComponent } from './components/recuperar-password/recuperar-password.component';
+import { NabvarComponent } from './components/nabvar/nabvar.component';
 
 
 
@@ -29,7 +30,8 @@ import { RecuperarPasswordComponent } from './components/recuperar-password/recu
     RegistrarUsuarioComponent,
     LoginComponent,
     VerificarCorreoComponent,
-    RecuperarPasswordComponent
+    RecuperarPasswordComponent,
+    NabvarComponent
 
   ],
   imports: [
