@@ -37,13 +37,28 @@ export class ListUsuarioComponent implements OnInit {
   }
   getUsuarioId(id_instancia: string) {
     this._usuarioService.getUsuariosBy(id_instancia).subscribe(data => {
-      this.usuario = [];
-      data.forEach((element: any) => {
-        this.usuario.push({
-          id: element.payload.doc.id,
-          ...element.payload.doc.data()
-        })
+      this.usuario = data.map((element: any) => {
+        const fechaCreacion = element.payload.doc.data().fechaCreacion.toDate();
+        const fechaActualizacion = element.payload.doc.data().fechaActualizacion.toDate();
+        const opcionesDeFormato = {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          timeZoneName: 'short'
+        };
+        const fechaFormateadaCreacion = fechaCreacion.toLocaleString(undefined, opcionesDeFormato);
+        const fechaFormateadaActualizacion = fechaActualizacion.toLocaleString(undefined, opcionesDeFormato);
 
+        return {
+          id: element.payload.doc.id,
+          ...element.payload.doc.data(),
+          fechaCreacion: fechaFormateadaCreacion,
+          fechaActualizacion: fechaFormateadaActualizacion,
+
+        };
       });
       console.log(this.usuario)
     })

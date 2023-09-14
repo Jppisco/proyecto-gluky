@@ -17,10 +17,12 @@
         <td class="table__cell">{{usuarios.id_instancia}}</td>
         <td class="table__cell">{{usuarios.usuario}}</td>
         <td class="table__cell">{{usuarios.clave}}</td>
-        <td class="table__cell">{{usuarios.fechaCreacion * 1000 | date }}</td>
-        <td class="table__cell">{{usuarios.fechaActualizacion * 1000 | date}}</td>
-        <td class="table__cell table__cell--options"><i class="fas fa-trash-alt fa-lg" (click)="eliminarUsuario(usuarios.id)"></i></td>
-        <td class="table__cell table__cell--options"><i class="fas fa-edit fa-lg" [routerLink]="['/edit-U/',usuarios.id,usuarios.id_instancia]"></i></td>
+        <td class="table__cell">{{usuarios.fechaCreacion  }}</td>
+        <td class="table__cell">{{usuarios.fechaActualizacion }}</td>
+        <td class="table__cell table__cell--options"><i class="fas fa-trash-alt fa-lg"
+            (click)="eliminarUsuario(usuarios.id)"></i></td>
+        <td class="table__cell table__cell--options"><i class="fas fa-edit fa-lg"
+            [routerLink]="['/edit-U/',usuarios.id,usuarios.id_instancia]"></i></td>
       </tr>
     </tbody>
   </table>
@@ -31,35 +33,34 @@
 
 <div class="table__mobile" *ngIf="usuarios.length > 0">
   <div class="table__mobile__item" *ngFor="let usuarios of usuario">
-      <div class="table__mobile__row">
-          <div class="table__mobile__header">Instancia</div>
-          <div class="table__mobile__body">{{usuarios.id_instancia}}</div>
+    <div class="table__mobile__row">
+      <div class="table__mobile__header">Instancia</div>
+      <div class="table__mobile__body">{{usuarios.id_instancia}}</div>
+    </div>
+    <div class="table__mobile__row">
+      <div class="table__mobile__header">Usuario</div>
+      <div class="table__mobile__body">{{usuarios.usuario}}</div>
+    </div>
+    <div class="table__mobile__row">
+      <div class="table__mobile__header">Contraseña</div>
+      <div class="table__mobile__body">{{usuarios.clave}}</div>
+    </div>
+    <div class="table__mobile__row">
+      <div class="table__mobile__header">Fecha de creación</div>
+      <div class="table__mobile__body">{{usuarios.fechaCreacion * 1000 | date }}</div>
+    </div>
+    <div class="table__mobile__row">
+      <div class="table__mobile__header">Fecha de actualización</div>
+      <div class="table__mobile__body">{{usuarios.fechaActualizacion * 1000 | date}}</div>
+    </div>
+    <div class="table__mobile__row">
+      <div class="table__mobile__header">Opciones</div>
+      <div class="table__mobile__body">
+        <i class="fas fa-trash-alt fa-lg" (click)="eliminarUsuario(usuarios.id)"></i>
+        <i class="fas fa-edit fa-lg" [routerLink]="['/edit-U/',usuarios.id,usuarios.id_instancia]"></i>
       </div>
-      <div class="table__mobile__row">
-          <div class="table__mobile__header">Usuario</div>
-          <div class="table__mobile__body">{{usuarios.usuario}}</div>
-      </div>
-      <div class="table__mobile__row">
-          <div class="table__mobile__header">Contraseña</div>
-          <div class="table__mobile__body">{{usuarios.clave}}</div>
-      </div>
-      <div class="table__mobile__row">
-          <div class="table__mobile__header">Fecha de creación</div>
-          <div class="table__mobile__body">{{usuarios.fechaCreacion * 1000 | date }}</div>
-      </div>
-      <div class="table__mobile__row">
-          <div class="table__mobile__header">Fecha de actualización</div>
-          <div class="table__mobile__body">{{usuarios.fechaActualizacion * 1000 | date}}</div>
-      </div>
-      <div class="table__mobile__row">
-          <div class="table__mobile__header">Opciones</div>
-          <div class="table__mobile__body">
-            <i class="fas fa-trash-alt fa-lg" (click)="eliminarUsuario(usuarios.id)"></i>
-            <i class="fas fa-edit fa-lg" [routerLink]="['/edit-U/',usuarios.id,usuarios.id_instancia]"></i>
-          </div>
-      </div>
+    </div>
   </div>
   <button [routerLink]="['/create-U/',id_instancia]">Añadir</button>
   <button routerLink="/list-I">Volver</button>
 </div>
-

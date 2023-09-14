@@ -5,6 +5,7 @@ import { InstanciaService } from 'src/app/services/instancia.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-list-instancia',
   templateUrl: './list-instancia.component.html',
@@ -12,11 +13,12 @@ import Swal from 'sweetalert2';
 })
 export class ListInstanciaComponent implements OnInit {
   instancias: any[] = [];
+  i: any;
 
   dataUser: any;
 
   ngOnInit(): void {
-    this._usuarioService.logout()
+    // this._usuarioService.logout()
     //al iniciar el componente va a ejecutar la funcion
     this.getInstancias();
   }
@@ -25,23 +27,39 @@ export class ListInstanciaComponent implements OnInit {
     private _usuarioService: UsuarioService,
     private afAuth: AngularFireAuth,
     private router: Router,
+
   ) { }
 
 
   //hacemos una funcion que no trae una la consulta de todas las intancias
   async getInstancias() {
     await this._instanciaService.getInstancias().subscribe(data => {
-      this.instancias = [];
-      data.forEach((element: any) => {
+      this.instancias = data.map((element: any) => {
+        const fechaCreacion = element.payload.doc.data().fechaCreacion.toDate();
+        const fechaActualizacion = element.payload.doc.data().fechaActualizacion.toDate();
+        const opcionesDeFormato = {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          timeZoneName: 'short'
+        };
+        const fechaFormateadaCreacion = fechaCreacion.toLocaleString(undefined, opcionesDeFormato);
+        const fechaFormateadaActualizacion = fechaActualizacion.toLocaleString(undefined, opcionesDeFormato);
 
-        this.instancias.push({
+        return {
           id: element.payload.doc.id,
-          ...element.payload.doc.data()
-        })
+          ...element.payload.doc.data(),
+          fechaCreacion: fechaFormateadaCreacion,
+          fechaActualizacion: fechaFormateadaActualizacion,
 
+        };
       });
 
-    })
+      console.log(this.instancias);
+    });
   }
 
   //metodo para eliminar instancias recibiendo el id
