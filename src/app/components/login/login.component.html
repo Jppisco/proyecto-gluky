@@ -1,7 +1,5 @@
-<div>
-
-  <div>
-
+<!-- <div>
+  <div class="container">
     <h1>Login</h1>
     <form (ngSubmit)="login()" [formGroup]="loginUsuario">
       <div>
@@ -28,5 +26,29 @@
       <a routerLink="/recuperar-password">Recuperar Contraseña</a>
     </form>
   </div>
+</div> -->
 
+<div class="container">
+  <div class="form__card">
+    <form action="#" class="form">
+      <h1 class="form__title">Iniciar sesion</h1>
+      <div class="form__control">
+        <input placeholder="Usuario" class="control__input" type="email" />
+        <label for="input-field" class="control__label">Usuario</label>
+        <span class="control__span"></span>
+      </div>
+      <div class="form__control">
+        <input placeholder="Contraseña" class="control__input" type="password" />
+        <label for="input-field" class="control__label">Contraseña</label>
+        <span class="control__span"></span>
+      </div>
+      <button class="form__btn">Ingresar</button>
+    </form>
+    <div class="form__right">
+      <h1 class="right__title">Gluky</h1>
+      <p class="right__text">
+        Sistema para la administracion de usuarios de prueba
+      </p>
+    </div>
+  </div>
 </div>
