@@ -43,8 +43,8 @@ export class ListInstanciaComponent implements OnInit {
           day: 'numeric',
           hour: '2-digit',
           minute: '2-digit',
-          second: '2-digit',
-          timeZoneName: 'short'
+
+
         };
         const fechaFormateadaCreacion = fechaCreacion.toLocaleString(undefined, opcionesDeFormato);
         const fechaFormateadaActualizacion = fechaActualizacion.toLocaleString(undefined, opcionesDeFormato);
