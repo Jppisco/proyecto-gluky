@@ -1,23 +1,22 @@
-
-*{
+* {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
 }
 
-.container{
+.container {
   display: flex;
   height: 100vh;
 }
 
-.form__card{
+.form__card {
   background-color: white;
   display: grid;
   grid-template-columns: 1;
   grid-template-rows: repeat(2, 1fr);
 }
 
-.form{
+.form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +26,7 @@
   background-color: white;
 }
 
-.form__title{
+.form__title {
   text-align: center;
   padding: 20px 0;
 }
@@ -68,18 +67,18 @@
   transition: all 0.3s ease;
 }
 
-.control__input:focus + .control__label {
+.control_input:focus+.control_label {
   top: -20px;
   font-size: 12px;
   color: black;
 }
 
-.control__input:focus + .control__label + .control__span {
+.control_input:focus+.controllabel+.control_span {
   width: 100%;
 }
 
 
-.form__btn{
+.form__btn {
   height: 40px;
   width: 180px;
   margin-top: 60px;
@@ -87,6 +86,7 @@
   background-color: white;
   font-weight: bold;
   transition: 0.3s ease;
+  color: black;
 }
 
 .form__btn:hover {
@@ -95,7 +95,7 @@
   letter-spacing: 3px;
 }
 
-.form__right{
+.form__right {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -106,25 +106,25 @@
   color: white;
 }
 
-.right__title{
+.right__title {
   text-align: center;
   padding-bottom: 30px;
   font-size: 50px;
 }
 
-.right__text{
+.right__text {
   text-align: center;
 }
 
 @media (min-width: 450px) {
 
-  .container{
+  .container {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .form__card{
+  .form__card {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -133,7 +133,7 @@
     height: 500px;
   }
 
-  .form{
+  .form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -143,7 +143,7 @@
     border-radius: 25px 0 0 25px;
   }
 
-  .form__right{
+  .form__right {
     grid-column: 2;
     grid-row: 1 / span 2;
     border-radius: 0 25px 25px 0;

@@ -1,54 +1,33 @@
-<!-- <div>
-  <div class="container">
-    <h1>Login</h1>
-    <form (ngSubmit)="login()" [formGroup]="loginUsuario">
-      <div>
-        <input type="email" formControlName="email" placeholder="name@example.com">
-        <label>Email</label>
-        <span *ngIf="loginUsuario.get('email')?.hasError('required') && loginUsuario.get('email')?.touched">
-          El <strong>correo</strong> es requerido
-        </span>
-        <span *ngIf="loginUsuario.get('email')?.hasError('email') && loginUsuario.get('email')?.touched">
-          El <strong>correo</strong> es invalido
-        </span>
-      </div>
-      <div>
-        <input type="password" formControlName="password" placeholder="Password">
-        <label>Password</label>
-        <span *ngIf="loginUsuario.get('password')?.hasError('required') && loginUsuario.get('password')?.touched">
-          La <strong>password</strong> es requerida
-        </span>
-      </div>
-      <div>
-        <button type="submit" [disabled]="loginUsuario.invalid">Ingresar</button>
-      </div>
-      <p>No tienes cuenta? <a routerLink="/registrar-usuario">Registrar</a></p>
-      <a routerLink="/recuperar-password">Recuperar Contraseña</a>
-    </form>
-  </div>
-</div> -->
-
 <div class="container">
   <div class="form__card">
     <form action="#" class="form" (ngSubmit)="login()" [formGroup]="loginUsuario">
-      <h1 class="form__title">Iniciar sesion</h1>
+      <h1 class="form__title">Iniciar sesión</h1>
       <div class="form__control">
         <input placeholder="Usuario" class="control__input" type="email" formControlName="email" />
         <label for="input-field" class="control__label">Usuario</label>
         <span class="control__span"></span>
       </div>
+      <span *ngIf="loginUsuario.get('email')?.hasError('required') && loginUsuario.get('email')?.touched">
+        El <strong>correo</strong> es requerido
+      </span>
+      <span *ngIf="loginUsuario.get('email')?.hasError('email') && loginUsuario.get('email')?.touched">
+        El <strong>correo</strong> es invalido
+      </span>
       <div class="form__control">
         <input placeholder="Contraseña" class="control__input" type="password" formControlName="password" />
         <label for="input-field" class="control__label">Contraseña</label>
         <span class="control__span"></span>
       </div>
-      <button class="form__btn" [disabled]="loginUsuario.invalid">Ingresar</button>
+      <span *ngIf="loginUsuario.get('password')?.hasError('required') && loginUsuario.get('password')?.touched">
+        La <strong>contraseña</strong> es requerida
+      </span>
+      <button type="submit" class="form__btn" [disabled]="loginUsuario.invalid">Ingresar</button>
     </form>
     <div class="form__right">
       <h1 class="right__title">Gluky</h1>
       <p class="right__text">
-        Sistema para la administracion de usuarios de prueba
+        Sistema para la administración de usuarios de prueba
       </p>
-    </div>
+    </div>      
   </div>
 </div>
