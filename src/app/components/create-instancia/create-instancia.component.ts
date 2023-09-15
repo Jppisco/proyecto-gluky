@@ -31,10 +31,11 @@ export class CreateInstanciaComponent implements OnInit {
   ) {
     //recolectamos todos los datos del formulario
     this.createInstancia = this.fb.group({
-      id_instancia: ['', Validators.required],
+      // id_instancia: ['', Validators.required],
       nombre: ['', Validators.required],
       doc_id: ['', Validators.required],
       pais: ['', Validators.required],
+
     })
     //tomamos el id que viene por la ruta
     this.id = this.aRoute.snapshot.paramMap.get('id');
@@ -55,13 +56,15 @@ export class CreateInstanciaComponent implements OnInit {
   agregarIntancias() {
     //definimos un objeto con todos los atributos del formulario
     const instancia: any = {
-      id_instancia: this.createInstancia.value.id_instancia,
+      id_instancia: this.createInstancia.value.nombre.toLowerCase().replace(/ /g, '_'),
       nombre: this.createInstancia.value.nombre,
       doc_id: this.createInstancia.value.doc_id,
       pais: this.createInstancia.value.pais,
+
       fechaCreacion: new Date(),
       fechaActualizacion: new Date()
     }
+    console.log(instancia)
     //hacemos llamado a la funcion que hay en el servicio y almacenamos un firebase
     this._instanciaService.agregarInstancia(instancia).then(() => {
       Swal.fire({
@@ -80,7 +83,6 @@ export class CreateInstanciaComponent implements OnInit {
   //funcion para editar instancias
   editarInstancia(id: string) {
     const instancia: any = {
-      id_instancia: this.createInstancia.value.id_instancia,
       nombre: this.createInstancia.value.nombre,
       doc_id: this.createInstancia.value.doc_id,
       pais: this.createInstancia.value.pais,
@@ -110,10 +112,10 @@ export class CreateInstanciaComponent implements OnInit {
         console.log(data)
         console.log(data.payload.data()['nombre']);
         this.createInstancia.setValue({
-          id_instancia: data.payload.data()['id_instancia'],
           nombre: data.payload.data()['nombre'],
           doc_id: data.payload.data()['doc_id'],
           pais: data.payload.data()['pais'],
+
         })
 
       })

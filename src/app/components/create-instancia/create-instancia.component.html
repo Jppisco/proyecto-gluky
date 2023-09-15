@@ -1,11 +1,22 @@
-<button class="agregar" routerLink="/list-I/id_instancia">volver</button>
+<button class="agregar" routerLink="/list-I">volver</button>
 <div class="container">
   <h1>{{titulo}}</h1>
   <form [formGroup]="createInstancia" (ngSubmit)="agregarEditarIntancias()">
-    <input type="text" placeholder="ID" formControlName="id_instancia" required>
     <input type="text" placeholder="Nombre" formControlName="nombre" required>
     <input type="text" placeholder="documento ID" formControlName="doc_id" required>
-    <input type="text" placeholder="Pais" formControlName="pais" required>
+    <select formControlName="pais">
+      <option value="Mexico">Mexico</option>
+      <option value="Colombia">Colombia</option>
+      <option value="Panama">Panama</option>
+      <option value="Ecuador">Ecuador</option>
+      <option value="Chile">Chile</option>
+      <option value="Guatemala">Guatemala</option>
+      <option value="Peru">Peru</option>
+      <option value="Costa Rica">Costa Rica</option>
+      <option value="Honduras">Honduras</option>
+      <option value="Nicaragua">Nicaragua</option>
+    </select>
+
     <button class="submit">Agregar</button>
   </form>
 </div>

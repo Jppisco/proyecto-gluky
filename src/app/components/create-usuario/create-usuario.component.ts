@@ -29,6 +29,8 @@ export class CreateUsuarioComponent implements OnInit {
     this.createUsuario = this.fb.group({
       usuario: ['', Validators.required],
       clave: ['', Validators.required],
+      puntos: ['', Validators.required],
+
     })
     this.id_instancia = this.aRoute.snapshot.paramMap.get('id_instancia');
     console.log(this.id_instancia)
@@ -53,6 +55,7 @@ export class CreateUsuarioComponent implements OnInit {
       id_instancia: this.id_instancia,
       usuario: this.createUsuario.value.usuario,
       clave: this.createUsuario.value.clave,
+      puntos: this.createUsuario.value.puntos,
       fechaCreacion: new Date(),
       fechaActualizacion: new Date()
     }
@@ -79,6 +82,7 @@ export class CreateUsuarioComponent implements OnInit {
       id_instancia: this.id_instancia,
       usuario: this.createUsuario.value.usuario,
       clave: this.createUsuario.value.clave,
+      puntos: this.createUsuario.value.puntos,
       fechaActualizacion: new Date()
     }
     this._usuarioService.actualizarUsuario(id, usuarios).then(() => {
@@ -106,6 +110,7 @@ export class CreateUsuarioComponent implements OnInit {
         this.createUsuario.setValue({
           usuario: data.payload.data()['usuario'],
           clave: data.payload.data()['clave'],
+          puntos: data.payload.data()['puntos'],
         })
 
       })

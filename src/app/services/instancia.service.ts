@@ -18,7 +18,7 @@ export class InstanciaService {
 
   //hacemos una consulta a la base de datos y ordenamos por fecha de creacion
   getInstancias(): Observable<any> {
-    return this.firestore.collection('instancias', ref => ref.orderBy('fechaCreacion', 'asc')).snapshotChanges();
+    return this.firestore.collection('instancias', ref => ref.orderBy('fechaCreacion', 'desc')).snapshotChanges();
   }
 
   //hacemos una metodo recibe el id lo valida y lo elimina
