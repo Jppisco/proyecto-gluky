@@ -69,7 +69,7 @@ export class CreateProgramaComponent implements OnInit {
         timer: 1500
       })
       console.log('Programa registrado con exito');
-      this.router.navigate(['/list-I'])
+      this.router.navigate(['/list-P/', this.id_instancia])
     }).catch(error => {
       console.log(error)
     })
