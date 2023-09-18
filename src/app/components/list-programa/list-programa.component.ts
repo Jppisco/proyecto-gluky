@@ -1,46 +1,51 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { ActivatedRoute } from '@angular/router';
+import { ProgramaService } from 'src/app/services/programa.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-list-usuario',
-  templateUrl: './list-usuario.component.html',
-  styleUrls: ['./list-usuario.component.css']
+  selector: 'app-list-programa',
+  templateUrl: './list-programa.component.html',
+  styleUrls: ['./list-programa.component.css']
 })
-export class ListUsuarioComponent implements OnInit {
-  id_programa: string | null;
+export class ListProgramaComponent implements OnInit {
   id_instancia: string | null;
-  usuarios: any[] = [];
-  usuario: any[] = [];
-
-
+  programas: any[] = [];
+  programa: any[] = [];
   ngOnInit(): void {
-    this._usuarioService.logout()
-    this.getusu();
-    this.getUsuarios()
-
+    this.getProgramas()
+    this.getpro();
 
   }
-
   constructor(
-    private _usuarioService: UsuarioService,
+    private _programaService: ProgramaService,
     private aRoute: ActivatedRoute,
   ) {
-    this.id_programa = this.aRoute.snapshot.paramMap.get('id_programa');
-    console.log(this.id_programa)
     this.id_instancia = this.aRoute.snapshot.paramMap.get('id_instancia');
     console.log(this.id_instancia)
   }
-
-  getusu() {
-    if (this.id_programa !== null) {
-      return this.getUsuarioId(this.id_programa)
+  getpro() {
+    if (this.id_instancia !== null) {
+      return this.getProgramaId(this.id_instancia)
     }
   }
-  getUsuarioId(id_programa: string) {
-    this._usuarioService.getUsuariosBy(id_programa).subscribe(data => {
-      this.usuario = data.map((element: any) => {
+  //metodo que retorna todos los datos de los usuarios y se almacenan en un arreglo
+  getProgramas() {
+    this._programaService.getProgramas().subscribe(data => {
+      this.programas = [];
+      data.forEach((element: any) => {
+        this.programas.push({
+          id: element.payload.doc.id,
+          ...element.payload.doc.data()
+        })
+
+      });
+      console.log(this.programas)
+    })
+  }
+  getProgramaId(id_instancia: string) {
+    this._programaService.getProgramasBy(id_instancia).subscribe(data => {
+      this.programa = data.map((element: any) => {
         const fechaCreacion = element.payload.doc.data().fechaCreacion.toDate();
         const fechaActualizacion = element.payload.doc.data().fechaActualizacion.toDate();
         const opcionesDeFormato = {
@@ -62,13 +67,12 @@ export class ListUsuarioComponent implements OnInit {
 
         };
       });
-      console.log(this.usuario)
+      console.log(this.programa)
     })
   }
 
-
   //hacemos una funcion que no trae una la consulta de todas las intancias
-  eliminarUsuario(id: string) {
+  eliminarPrograma(id: string) {
     Swal.fire({
       title: 'Estas Seguro?',
       text: "Esta Accion es irreversible!",
@@ -79,15 +83,15 @@ export class ListUsuarioComponent implements OnInit {
       confirmButtonText: 'Si, Eliminar!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this._usuarioService.eliminarUsuario(id).then(() => {
+        this._programaService.eliminarPrograma(id).then(() => {
           console.log(id);
-          console.log('usuario eliminada correctamente')
+          console.log('programa eliminada correctamente')
         }).catch(error => {
           console.log(error)
         })
         Swal.fire(
           'Eliminado!',
-          'El Usuario ha sido borrada correctamente.',
+          'El programa ha sido borrada correctamente.',
           'success'
         )
       }
@@ -96,18 +100,5 @@ export class ListUsuarioComponent implements OnInit {
 
   }
 
-  //metodo que retorna todos los datos de los usuarios y se almacenan en un arreglo
-  getUsuarios() {
-    this._usuarioService.getUsuarios().subscribe(data => {
-      this.usuarios = [];
-      data.forEach((element: any) => {
-        this.usuarios.push({
-          id: element.payload.doc.id,
-          ...element.payload.doc.data()
-        })
 
-      });
-      // console.log(this.usuarios)
-    })
-  }
 }

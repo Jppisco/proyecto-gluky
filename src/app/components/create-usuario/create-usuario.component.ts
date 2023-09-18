@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class CreateUsuarioComponent implements OnInit {
   //generamos variables
   createUsuario: FormGroup;
+  id_programa: string | null;
   id_instancia: string | null;
   id: string | null;
   titulo = 'Agregar Usuario';
@@ -32,10 +33,12 @@ export class CreateUsuarioComponent implements OnInit {
       puntos: ['', Validators.required],
 
     })
-    this.id_instancia = this.aRoute.snapshot.paramMap.get('id_instancia');
-    console.log(this.id_instancia)
+    this.id_programa = this.aRoute.snapshot.paramMap.get('id_programa');
+    console.log(this.id_programa)
     this.id = this.aRoute.snapshot.paramMap.get('id');
     console.log(this.id)
+    this.id_instancia = this.aRoute.snapshot.paramMap.get('id_instancia');
+    console.log(this.id_instancia)
   }
   agregarEditarUsuarios() {
 
@@ -52,7 +55,7 @@ export class CreateUsuarioComponent implements OnInit {
   agregarUsuarios() {
     //definimos un objeto con todos los atributos del formulario
     const usuarios: any = {
-      id_instancia: this.id_instancia,
+      id_programa: this.id_programa,
       usuario: this.createUsuario.value.usuario,
       clave: this.createUsuario.value.clave,
       puntos: this.createUsuario.value.puntos,
@@ -69,7 +72,7 @@ export class CreateUsuarioComponent implements OnInit {
         timer: 1500
       })
       console.log('Usuario registrado con exito');
-      this.router.navigate(['/list-U/', this.id_instancia])
+      this.router.navigate(['/list-U/', this.id_programa])
     }).catch(error => {
       console.log(error)
     })
@@ -79,7 +82,7 @@ export class CreateUsuarioComponent implements OnInit {
   editarUsuarios(id: string) {
     //definimos un objeto con todos los atributos del formulario
     const usuarios: any = {
-      id_instancia: this.id_instancia,
+      id_programa: this.id_programa,
       usuario: this.createUsuario.value.usuario,
       clave: this.createUsuario.value.clave,
       puntos: this.createUsuario.value.puntos,
@@ -94,7 +97,7 @@ export class CreateUsuarioComponent implements OnInit {
         timer: 1500
       })
       console.log("Usuario Actualizada");
-      this.router.navigate(['/list-U/', this.id_instancia])
+      this.router.navigate(['/list-U/', this.id_programa,this.id_instancia])
     }).catch(error => {
       console.log(error)
     })
@@ -106,7 +109,7 @@ export class CreateUsuarioComponent implements OnInit {
       this.titulo = 'Editar Usuario';
       this._usuarioService.getUsuario(this.id).subscribe(data => {
         console.log(data)
-        console.log(data.payload.data()['id_instancia']);
+        console.log(data.payload.data()['id_programa']);
         this.createUsuario.setValue({
           usuario: data.payload.data()['usuario'],
           clave: data.payload.data()['clave'],

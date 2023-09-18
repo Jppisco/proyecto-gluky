@@ -8,6 +8,8 @@ import { RegistrarUsuarioComponent } from './components/registrar-usuario/regist
 import { LoginComponent } from './components/login/login.component';
 import { VerificarCorreoComponent } from './components/verificar-correo/verificar-correo.component';
 import { RecuperarPasswordComponent } from './components/recuperar-password/recuperar-password.component';
+import { CreateProgramaComponent } from './components/create-programa/create-programa.component';
+import { ListProgramaComponent } from './components/list-programa/list-programa.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -19,9 +21,15 @@ const routes: Routes = [
   { path: 'create-I', component: CreateInstanciaComponent },
   { path: 'edit/:id', component: CreateInstanciaComponent },
   { path: 'list-U', component: ListUsuarioComponent },
-  { path: 'list-U/:id_instancia', component: ListUsuarioComponent },
-  { path: 'create-U/:id_instancia', component: CreateUsuarioComponent },
-  { path: 'edit-U/:id/:id_instancia', component: CreateUsuarioComponent },
+  { path: 'list-U/:id_programa', component: ListUsuarioComponent },
+  { path: 'list-U/:id_programa/:id_instancia', component: ListUsuarioComponent },
+  { path: 'list-U/:id_programa/:id_instancia', component: ListUsuarioComponent },
+  { path: 'create-U/:id_programa', component: CreateUsuarioComponent },
+  { path: 'edit-U/:id/:id_programa/:id_instancia', component: CreateUsuarioComponent },
+  { path: 'create-P/:id_instancia', component: CreateProgramaComponent },
+  { path: 'list-P/:id_instancia', component: ListProgramaComponent },
+  { path: 'list-P', component: ListProgramaComponent },
+  { path: 'edit-P/:id/:id_instancia', component: CreateProgramaComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 

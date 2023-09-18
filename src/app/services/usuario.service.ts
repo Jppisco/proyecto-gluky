@@ -42,8 +42,8 @@ export class UsuarioService {
   }
 
   //metodo que hace la consulta
-  getUsuariosBy(id_instancia: string): Observable<any> {
-    return this.firestore.collection('usuarios', ref => ref.where('id_instancia', '==', id_instancia)).snapshotChanges();
+  getUsuariosBy(id_programa: string): Observable<any> {
+    return this.firestore.collection('usuarios', ref => ref.where('id_programa', '==', id_programa)).snapshotChanges();
   }
 
   logout() {
