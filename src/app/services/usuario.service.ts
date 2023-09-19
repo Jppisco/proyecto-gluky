@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { GoogleAuthProvider } from '@firebase/auth';
 
 
 @Injectable({
@@ -15,6 +16,16 @@ export class UsuarioService {
     private afAuth: AngularFireAuth,
     private router: Router,) {
 
+  }
+
+  loginGoogle() {
+    return this.authLogin(new GoogleAuthProvider())
+  }
+  authLogin(provider: any) {
+    this.afAuth.signInWithPopup(provider).then(result => {
+      console.log(result)
+      this.router.navigate(['/list-I']);
+    }).catch(error => console.log(error))
   }
 
   //hacemos una metodo para almacenar los datos en la collecion

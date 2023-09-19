@@ -18,7 +18,7 @@ export class ListInstanciaComponent implements OnInit {
   dataUser: any;
 
   ngOnInit(): void {
-    // this._usuarioService.logout()
+    this._usuarioService.logout()
     //al iniciar el componente va a ejecutar la funcion
     this.getInstancias();
   }
@@ -72,20 +72,20 @@ export class ListInstanciaComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si, Eliminar!'
     }).then((result) => {
-      if (result.isConfirmed) {
-        this._instanciaService.eliminarInstancia(id).then(() => {
-          console.log(id);
-          console.log('instancia eliminada correctamente')
-        }).catch(error => {
-          console.log(error)
-        })
-        Swal.fire(
-          'Eliminado!',
-          'La instancia ha sido borrada correctamente.',
-          'success'
-        )
-      }
+      if (!result.isConfirmed) return
+      this._instanciaService.eliminarInstancia(id).then(() => {
+        console.log(id);
+        console.log('instancia eliminada correctamente')
+      }).catch(error => {
+        console.log(error)
+      })
+      Swal.fire(
+        'Eliminado!',
+        'La instancia ha sido borrada correctamente.',
+        'success'
+      )
     })
+
 
 
   }
