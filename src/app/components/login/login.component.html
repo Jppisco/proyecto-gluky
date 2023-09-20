@@ -22,8 +22,9 @@
         La <strong>contraseña</strong> es requerida
       </span>
       <button type="submit" class="form__btn" [disabled]="loginUsuario.invalid">Ingresar</button>
+      <button class="form__btn" (click)="loginGoogle()"> Login Google</button>
     </form>
-    <button class="form__btn" (click)="loginGoogle()"> Login Google</button>
+
     <div class="form__right">
       <h1 class="right__title">Gluky</h1>
       <p class="right__text">

@@ -18,7 +18,7 @@ export class ListInstanciaComponent implements OnInit {
   dataUser: any;
 
   ngOnInit(): void {
-    this._usuarioService.logout()
+    // this._usuarioService.logout()
     //al iniciar el componente va a ejecutar la funcion
     this.getInstancias();
   }

@@ -10,6 +10,7 @@ import { VerificarCorreoComponent } from './components/verificar-correo/verifica
 import { RecuperarPasswordComponent } from './components/recuperar-password/recuperar-password.component';
 import { CreateProgramaComponent } from './components/create-programa/create-programa.component';
 import { ListProgramaComponent } from './components/list-programa/list-programa.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,19 +18,23 @@ const routes: Routes = [
   { path: 'registrar-usuario', component: RegistrarUsuarioComponent },
   { path: 'verificar-correo', component: VerificarCorreoComponent },
   { path: 'recuperar-password', component: RecuperarPasswordComponent },
-  { path: 'list-I', component: ListInstanciaComponent },
-  { path: 'create-I', component: CreateInstanciaComponent },
-  { path: 'edit/:id', component: CreateInstanciaComponent },
-  { path: 'list-U', component: ListUsuarioComponent },
-  { path: 'list-U/:id_programa', component: ListUsuarioComponent },
-  { path: 'list-U/:id_programa/:id_instancia', component: ListUsuarioComponent },
-  { path: 'list-U/:id_programa/:id_instancia', component: ListUsuarioComponent },
-  { path: 'create-U/:id_programa', component: CreateUsuarioComponent },
-  { path: 'edit-U/:id/:id_programa/:id_instancia', component: CreateUsuarioComponent },
-  { path: 'create-P/:id_instancia', component: CreateProgramaComponent },
-  { path: 'list-P/:id_instancia', component: ListProgramaComponent },
-  { path: 'list-P', component: ListProgramaComponent },
-  { path: 'edit-P/:id/:id_instancia', component: CreateProgramaComponent },
+  {
+    path: 'list-I',
+    component: ListInstanciaComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'create-I', component: CreateInstanciaComponent, canActivate: [AuthGuard], },
+  { path: 'edit/:id', component: CreateInstanciaComponent, canActivate: [AuthGuard], },
+  { path: 'list-U', component: ListUsuarioComponent, canActivate: [AuthGuard], },
+  { path: 'list-U/:id_programa', component: ListUsuarioComponent, canActivate: [AuthGuard], },
+  { path: 'list-U/:id_programa/:id_instancia', component: ListUsuarioComponent, canActivate: [AuthGuard], },
+  { path: 'list-U/:id_programa/:id_instancia', component: ListUsuarioComponent, canActivate: [AuthGuard], },
+  { path: 'create-U/:id_programa', component: CreateUsuarioComponent, canActivate: [AuthGuard], },
+  { path: 'edit-U/:id/:id_programa/:id_instancia', component: CreateUsuarioComponent, canActivate: [AuthGuard], },
+  { path: 'create-P/:id_instancia', component: CreateProgramaComponent, canActivate: [AuthGuard], },
+  { path: 'list-P/:id_instancia', component: ListProgramaComponent, canActivate: [AuthGuard], },
+  { path: 'list-P', component: ListProgramaComponent, canActivate: [AuthGuard], },
+  { path: 'edit-P/:id/:id_instancia', component: CreateProgramaComponent, canActivate: [AuthGuard], },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 

@@ -16,7 +16,7 @@ export class CreateInstanciaComponent implements OnInit {
   id: string | null;
   titulo = 'Agregar Instancia';
   ngOnInit(): void {
-    this._usuarioService.logout()
+  
     //iniciamos este metodo apenas se abra el omponente
     this.esEditar();
   }

@@ -56,16 +56,6 @@ export class UsuarioService {
   getUsuariosBy(id_programa: string): Observable<any> {
     return this.firestore.collection('usuarios', ref => ref.where('id_programa', '==', id_programa)).snapshotChanges();
   }
-
-  logout() {
-    this.afAuth.currentUser.then(user => {
-      if (user && user.emailVerified) {
-        this.dataUser = user;
-        console.log(user)
-      } else {
-        this.router.navigate(['/login']);
-      }
-    })
-  }
+ 
 
 }

@@ -16,7 +16,7 @@ export class ListUsuarioComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this._usuarioService.logout()
+    
     this.getusu();
     this.getUsuarios()
 
