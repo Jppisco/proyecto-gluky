@@ -17,7 +17,6 @@ import { RegistrarUsuarioComponent } from './components/registrar-usuario/regist
 import { LoginComponent } from './components/login/login.component';
 import { VerificarCorreoComponent } from './components/verificar-correo/verificar-correo.component';
 import { RecuperarPasswordComponent } from './components/recuperar-password/recuperar-password.component';
-import { NabvarComponent } from './components/nabvar/nabvar.component';
 import { CreateProgramaComponent } from './components/create-programa/create-programa.component';
 import { ListProgramaComponent } from './components/list-programa/list-programa.component';
 
@@ -38,7 +37,6 @@ import { ListProgramaComponent } from './components/list-programa/list-programa.
     LoginComponent,
     VerificarCorreoComponent,
     RecuperarPasswordComponent,
-    NabvarComponent,
     CreateProgramaComponent,
     ListProgramaComponent
 
