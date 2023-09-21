@@ -19,6 +19,8 @@ import { VerificarCorreoComponent } from './components/verificar-correo/verifica
 import { RecuperarPasswordComponent } from './components/recuperar-password/recuperar-password.component';
 import { CreateProgramaComponent } from './components/create-programa/create-programa.component';
 import { ListProgramaComponent } from './components/list-programa/list-programa.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 
 
@@ -38,7 +40,9 @@ import { ListProgramaComponent } from './components/list-programa/list-programa.
     VerificarCorreoComponent,
     RecuperarPasswordComponent,
     CreateProgramaComponent,
-    ListProgramaComponent
+    ListProgramaComponent,
+    NavbarComponent,
+    SidebarComponent
 
   ],
   imports: [
