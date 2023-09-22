@@ -24,7 +24,10 @@ export class UsuarioService {
   authLogin(provider: any) {
     this.afAuth.signInWithPopup(provider).then(result => {
       console.log(result)
-      this.router.navigate(['/list-I']);
+      this.afAuth.authState.subscribe((user: any) => {
+        localStorage.setItem('uid', user.uid);
+        this.router.navigate(['/list-I']);
+      })
     }).catch(error => console.log(error))
   }
 
@@ -56,6 +59,6 @@ export class UsuarioService {
   getUsuariosBy(id_programa: string): Observable<any> {
     return this.firestore.collection('usuarios', ref => ref.where('id_programa', '==', id_programa)).snapshotChanges();
   }
- 
+
 
 }

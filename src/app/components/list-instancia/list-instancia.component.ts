@@ -91,7 +91,8 @@ export class ListInstanciaComponent implements OnInit {
   }
   //cerrar sesion por angularfireauth
   logOut() {
-    this.afAuth.signOut().then(() => this.router.navigate(['/login']));
+    this.afAuth.signOut().then(() => {this.router.navigate(['/login'])
+    localStorage.clear();});
   }
 
 }

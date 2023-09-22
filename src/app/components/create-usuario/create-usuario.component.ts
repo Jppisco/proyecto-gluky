@@ -72,7 +72,7 @@ export class CreateUsuarioComponent implements OnInit {
         timer: 1500
       })
       console.log('Usuario registrado con exito');
-      this.router.navigate(['/list-U/', this.id_programa])
+      this.router.navigate(['/list-U/', this.id_programa, this.id_instancia])
     }).catch(error => {
       console.log(error)
     })
@@ -97,7 +97,7 @@ export class CreateUsuarioComponent implements OnInit {
         timer: 1500
       })
       console.log("Usuario Actualizada");
-      this.router.navigate(['/list-U/', this.id_programa,this.id_instancia])
+      this.router.navigate(['/list-U/', this.id_programa, this.id_instancia])
     }).catch(error => {
       console.log(error)
     })

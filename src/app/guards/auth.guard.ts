@@ -25,6 +25,7 @@ export class AuthGuard implements CanActivate {
       } else {
         // Si no cumple con las condiciones, redirige al usuario a la página de inicio de sesión
         this.router.navigate(['/login']);
+        localStorage.clear();
         return false;
       }
     });
