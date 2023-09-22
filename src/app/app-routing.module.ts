@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'list-U/:id_programa', component: ListUsuarioComponent, canActivate: [AuthGuard], },
   { path: 'list-U/:id_programa/:id_instancia', component: ListUsuarioComponent, canActivate: [AuthGuard], },
   { path: 'list-U/:id_programa/:id_instancia', component: ListUsuarioComponent, canActivate: [AuthGuard], },
-  { path: 'create-U/:id_programa', component: CreateUsuarioComponent, canActivate: [AuthGuard], },
+  { path: 'create-U/:id_programa/:id_instancia', component: CreateUsuarioComponent, canActivate: [AuthGuard], },
   { path: 'edit-U/:id/:id_programa/:id_instancia', component: CreateUsuarioComponent, canActivate: [AuthGuard], },
   { path: 'create-P/:id_instancia', component: CreateProgramaComponent, canActivate: [AuthGuard], },
   { path: 'list-P/:id_instancia', component: ListProgramaComponent, canActivate: [AuthGuard], },
