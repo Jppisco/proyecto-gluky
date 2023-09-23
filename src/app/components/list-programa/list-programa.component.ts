@@ -13,7 +13,6 @@ export class ListProgramaComponent implements OnInit {
   programas: any[] = [];
   programa: any[] = [];
   ngOnInit(): void {
-    this.getProgramas()
     this.getpro();
 
   }
@@ -30,19 +29,6 @@ export class ListProgramaComponent implements OnInit {
     }
   }
   //metodo que retorna todos los datos de los usuarios y se almacenan en un arreglo
-  getProgramas() {
-    this._programaService.getProgramas().subscribe(data => {
-      this.programas = [];
-      data.forEach((element: any) => {
-        this.programas.push({
-          id: element.payload.doc.id,
-          ...element.payload.doc.data()
-        })
-
-      });
-      console.log(this.programas)
-    })
-  }
   getProgramaId(id_instancia: string) {
     this._programaService.getProgramasBy(id_instancia).subscribe(data => {
       this.programa = data.map((element: any) => {

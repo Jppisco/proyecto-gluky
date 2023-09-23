@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { FirebaseCodeErrorService } from 'src/app/services/firebase-code-error.service';
 import Swal from 'sweetalert2';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-registrar-usuario',
@@ -19,7 +19,8 @@ export class RegistrarUsuarioComponent implements OnInit {
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
     private router: Router,
-    private firebaseError: FirebaseCodeErrorService
+
+    private user: UserService,
 
   ) {
 
@@ -32,55 +33,17 @@ export class RegistrarUsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void { }
-
-  //metodo que registra el usuario
   registrar() {
-    const email = this.registrarUsuario.value.email;
-    const password = this.registrarUsuario.value.password;
-    const repetirPassowrd = this.registrarUsuario.value.repetirPassword;
-    console.log(this.registrarUsuario);
-    //valida que las dos contraseñas sean iguales
-    if (password !== repetirPassowrd) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Las contraseñas ingresadas deben ser las mismas',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      return;
-    }
-    //si las contraseñas son iguales va a registar el usuario
-    this.afAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        //llamamos el metodo para ver si el correo ya fue validado
-        this.verificarCorreo();
-      })
-      .catch((error) => {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: this.firebaseError.codeError(error.code),
-          showConfirmButton: false,
-          timer: 1500
-        })
-      });
+    let data = {
+      email: this.registrarUsuario.value.email,
+      password: this.registrarUsuario.value.password,
+    };
+
+    this.user.SignUp(
+      this.registrarUsuario.value.email,
+      this.registrarUsuario.value.password,
+      data
+    );
   }
 
-  //metodo para verificar el correo
-  verificarCorreo() {
-    this.afAuth.currentUser
-      .then((user) => user?.sendEmailVerification())
-      .then(() => {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'info',
-          title: 'Le enviamos un correo electronico para su verificacion',
-          showConfirmButton: false,
-          timer: 3000
-        })
-        this.router.navigate(['/login']);
-      });
-  }
 }

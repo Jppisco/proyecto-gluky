@@ -13,18 +13,11 @@ import Swal from 'sweetalert2';
 })
 export class ListInstanciaComponent implements OnInit {
   instancias: any[] = [];
-  i: any;
-
-  dataUser: any;
-
   ngOnInit(): void {
-    // this._usuarioService.logout()
-    //al iniciar el componente va a ejecutar la funcion
     this.getInstancias();
   }
   constructor(
     private _instanciaService: InstanciaService,
-    private _usuarioService: UsuarioService,
     private afAuth: AngularFireAuth,
     private router: Router,
 
@@ -85,14 +78,14 @@ export class ListInstanciaComponent implements OnInit {
         'success'
       )
     })
-
-
-
   }
+
   //cerrar sesion por angularfireauth
   logOut() {
-    this.afAuth.signOut().then(() => {this.router.navigate(['/login'])
-    localStorage.clear();});
+    this.afAuth.signOut().then(() => {
+      this.router.navigate(['/login'])
+      localStorage.clear();
+    });
   }
 
 }
