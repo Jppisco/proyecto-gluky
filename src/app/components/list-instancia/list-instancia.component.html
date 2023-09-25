@@ -19,7 +19,7 @@
       </tr>
     </thead>
     <tbody class="table__body">
-      <tr class="table__row" *ngFor="let instancia of instancias">
+      <tr class="table__row" *ngFor="let instancia of instancias | paginate: { itemsPerPage: 10, currentPage: page }">
         <td class="table__cell">{{instancia.id_instancia}}</td>
         <td class="table__cell">{{instancia.nombre}}</td>
         <td class="table__cell">{{instancia.doc_id}}</td>
@@ -37,6 +37,7 @@
   </table>
 </div>
 
+<pagination-controls (pageChange)="page = $event" previousLabel="Ant" nextLabel="Sig"></pagination-controls>
 
 <div class="table__mobile" *ngIf="instancias.length > 0">
   <h5 *ngIf="instancias.length == 0" style="margin-top: 30px;">No hay datos</h5>

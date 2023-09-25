@@ -21,6 +21,7 @@ import { CreateProgramaComponent } from './components/create-programa/create-pro
 import { ListProgramaComponent } from './components/list-programa/list-programa.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -52,7 +53,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

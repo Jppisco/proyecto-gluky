@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class ListInstanciaComponent implements OnInit {
   instancias: any[] = [];
+  public page!: number;
   ngOnInit(): void {
     this.getInstancias();
   }
