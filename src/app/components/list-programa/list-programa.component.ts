@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class ListProgramaComponent implements OnInit {
   id_instancia: string | null;
-  programas: any[] = [];
+
   programa: any[] = [];
   ngOnInit(): void {
     this.getpro();

@@ -22,6 +22,7 @@ import { ListProgramaComponent } from './components/list-programa/list-programa.
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 
 
@@ -43,7 +44,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CreateProgramaComponent,
     ListProgramaComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    SpinnerComponent
 
   ],
   imports: [

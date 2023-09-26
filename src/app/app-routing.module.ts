@@ -11,6 +11,7 @@ import { RecuperarPasswordComponent } from './components/recuperar-password/recu
 import { CreateProgramaComponent } from './components/create-programa/create-programa.component';
 import { ListProgramaComponent } from './components/list-programa/list-programa.component';
 import { AuthGuard } from './guards/auth.guard';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'list-P/:id_instancia', component: ListProgramaComponent, canActivate: [AuthGuard], },
   { path: 'list-P', component: ListProgramaComponent, canActivate: [AuthGuard], },
   { path: 'edit-P/:id/:id_instancia', component: CreateProgramaComponent, canActivate: [AuthGuard], },
+  { path: 'spinner', component: SpinnerComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 

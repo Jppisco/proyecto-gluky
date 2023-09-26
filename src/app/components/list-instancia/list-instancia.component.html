@@ -19,7 +19,7 @@
       </tr>
     </thead>
     <tbody class="table__body">
-      <tr class="table__row" *ngFor="let instancia of instancias | paginate: { itemsPerPage: 10, currentPage: page }">
+      <tr class="table__row" *ngFor="let instancia of instancias | paginate: { itemsPerPage: 20, currentPage: page }">
         <td class="table__cell">{{instancia.id_instancia}}</td>
         <td class="table__cell">{{instancia.nombre}}</td>
         <td class="table__cell">{{instancia.doc_id}}</td>

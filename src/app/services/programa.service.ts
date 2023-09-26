@@ -21,8 +21,15 @@ export class ProgramaService {
     return this.firestore.collection('programas', ref => ref.orderBy('fechaCreacion', 'asc')).snapshotChanges();
   }
   //metodo que hace la consulta
+  // getProgramasBy(id_instancia: string): Observable<any> {
+  //   return this.firestore.collection('programas', ref => ref.where('id_instancia', '==', id_instancia)).snapshotChanges();
+  // }
   getProgramasBy(id_instancia: string): Observable<any> {
-    return this.firestore.collection('programas', ref => ref.where('id_instancia', '==', id_instancia)).snapshotChanges();
+    return this.firestore.collection('programas', ref => {
+      return ref
+        .where('id_instancia', '==', id_instancia)
+        .orderBy('fechaCreacion', 'asc');
+    }).snapshotChanges();
   }
   //hacemos una metodo recibe el id lo valida y lo elimina
   async eliminarPrograma(id: string): Promise<any> {

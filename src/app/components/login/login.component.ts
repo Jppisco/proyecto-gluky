@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
   loginUsuario: FormGroup;
+  loading: boolean = false;
 
 
   constructor(
@@ -42,6 +43,7 @@ export class LoginComponent implements OnInit {
       this.loginUsuario.value.password == ''
     )
       return window.alert('Ingrese credenciales');
+    this.loading = true;
 
     this.user
       .SignIn(
@@ -49,6 +51,7 @@ export class LoginComponent implements OnInit {
         this.loginUsuario.value.password
       )
       .catch((error) => {
+        this.loading = false;
         Swal.fire({
           position: 'top-end',
           icon: 'error',
